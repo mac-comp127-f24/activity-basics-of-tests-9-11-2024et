@@ -25,10 +25,41 @@ public class Roshambo {
         if (
             shape2.equals(SCISSORS) && shape1.equals(PAPER)
             || shape2.equals(PAPER) && shape1.equals(ROCK)
+            || shape2.equals(ROCK) && shape1.equals(SCISSORS)
         ) {
             return 1;
         } else {
             return -1;
         }
     }
+
+        /**
+         * Plays one round of a Roshambo tournament, where all players make hand signs, then each player
+         * takes the hand sign of the player on their left if that player's sign beat their own.
+         * 
+         * @param handShapes The hand shapes of the players, with the first considered to be next to the
+         *                   last (because the players are in a circle).
+         * @return  A new list with the hand shapes for the next round.
+         */
+        public static List<String> playOneRound(List<String> handShapes) {
+            // code goes here    
+            playOneRound(handShapes) → returns new hand shapes;
+                // Players are in a circle, so the first player
+                // in the list is competing against the last
+                shapeToLeft ← last element of handShapes;
+                result ← new empty mutable list;
+                for each handShape in handShapes:
+                    call compareShapes(shapeToLeft, handShape);
+                    if shapeToLeft wins;
+                    add shapeToLeft to results;
+                else;
+                    add handShape to results;
+           // This player's shape becomes the shape
+           // to the left of the next player
+           shapeToLeft ← handShape
+           return result
+        }
+    
 }
+
+
